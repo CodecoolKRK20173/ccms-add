@@ -1,5 +1,6 @@
 package controller;
 
+import model.User;
 import java.util.List;
 
 public abstract class UserController {

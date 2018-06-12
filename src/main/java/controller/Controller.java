@@ -1,6 +1,7 @@
 package controller;
 
 import model.DataHandler;
+import view.View;
 
 public class Controller {
 

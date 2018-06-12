@@ -1,5 +1,8 @@
 package controller;
 
+import model.User;
+import java.util.List;
+
 public class MentorController extends UserController {
 
 

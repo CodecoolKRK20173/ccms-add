@@ -2,6 +2,7 @@ package controller;
 
 import java.util.List;
 import model.StudentAssignment;
+import model.User;
 
 public class StudentController extends UserController {
 
