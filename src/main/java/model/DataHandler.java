@@ -9,7 +9,7 @@ public class DataHandler {
     private List<User> mentorList = new ArrayList<>(); 
     private List<User> officeWorkerList = new ArrayList<>(); 
     private List<User> managerList = new ArrayList<>(); 
-    private List<Assigment> assignmentList = new ArrayList<>(); 
+    private List<Assignment> assignmentList = new ArrayList<>();
     
     public DataHandler(String filename) {
 
@@ -31,7 +31,7 @@ public class DataHandler {
         return this.studentList;
     }    
     
-    public List<Assigment> getAssignmentList() {
+    public List<Assignment> getAssignmentList() {
         return this.studentList;
     }
 
@@ -71,15 +71,15 @@ public class DataHandler {
         //
     }
 
-    public void addAssignment(Assigment assigment) {
+    public void addAssignment(Assignment assigment) {
         assignmentList.add(assigment);
     }
 
-    public void gradeAssignment(Student student, Assigment assigment, int grade) {
+    public void gradeAssignment(Student student, Assignment assigment, int grade) {
 
     }
 
-    public void submitAssignment(Student student, Assigment assigment, String link) {
+    public void submitAssignment(Student student, Assignment assigment, String link) {
 
     }
 
