@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="faacaa51-dc92-4ca0-bf0e-33c431accd5a" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ManagerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ManagerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/MentorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/MentorController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/OfficeWorkerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/OfficeWorkerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/StudentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/StudentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/UserController.java" afterDir="false" />
-    </list>
+    <list default="true" id="faacaa51-dc92-4ca0-bf0e-33c431accd5a" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -290,11 +281,10 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1853" height="925" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32954547" />
-      <window_info anchor="bottom" id="Messages" visible="true" weight="0.239899" />
+      <window_info active="true" anchor="bottom" id="Messages" visible="true" weight="0.239899" />
       <window_info anchor="right" id="Palette&#9;" />
       <window_info id="Image Layers" />
       <window_info anchor="right" id="Capture Analysis" />
@@ -305,7 +295,7 @@
       <window_info anchor="bottom" id="Terminal" weight="0.32954547" />
       <window_info id="Capture Tool" />
       <window_info id="Designer" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2562258" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2562258" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
