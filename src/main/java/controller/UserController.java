@@ -8,6 +8,7 @@ public abstract class UserController {
     private User loggedUser;
 
 
+
     public UserController(User loggedUser) {
         this.loggedUser = loggedUser;
     }
@@ -17,7 +18,7 @@ public abstract class UserController {
     }
 
     public void handleMenu() {
-        
+
     }
 
 }

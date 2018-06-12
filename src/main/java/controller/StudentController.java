@@ -15,7 +15,7 @@ public class StudentController extends UserController {
     }
 
     public List<StudentAssignment> listAssignment() {
-
+        return listAssignment;
     }
 
 }
