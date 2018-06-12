@@ -10,8 +10,8 @@ import view.View;
 public class ManagerController extends UserController {
 
 
-    public ManagerController(User loggedUser) {
-        super(loggedUser);
+    public ManagerController(User loggedUser, View view) {
+        super(loggedUser, view);
     }
 
     public void addMentor(DataHandler dataHandler, Mentor mentor) {
@@ -26,11 +26,15 @@ public class ManagerController extends UserController {
 
     }
 
-    public List<User> listStudents(View view, List<Student> studentList) {
+    public void listStudents(List<Student> studentList) {
         view.printUserList(studentList);
     }
 
-    public List<User> listMentors(View view, List<Mentor> mentorList) {
+    public void listMentors(List<Mentor> mentorList) {
         view.printUserList(mentorList);
+    }
+
+    public void handleMenu() {
+
     }
 }

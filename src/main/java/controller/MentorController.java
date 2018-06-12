@@ -4,12 +4,13 @@ import model.User;
 import java.util.List;
 import model.Student;
 import model.DataHandler;
+import view.View;
 
 public class MentorController extends UserController {
 
 
-    public MentorController(User loggedUser) {
-        super(loggedUser);
+    public MentorController(User loggedUser, View view) {
+        super(loggedUser, view);
     }
 
 
@@ -25,8 +26,8 @@ public class MentorController extends UserController {
 
     }
 
-    public List<User> listStudents() {
-
+    public void listStudents(List<Student> studentList) {
+        super.view.printUserList(studentList);
     }
 
     public void addAssignment() {
@@ -38,6 +39,11 @@ public class MentorController extends UserController {
     }
 
     public void checkAttendence() {
+
+    }
+
+
+    public void handleMenu() {
 
     }
 
