@@ -1,11 +1,15 @@
 package model;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
 public class DataHandler {
 
-    private List<User> studentList = new ArrayList<>(); 
+    private List<User> studentList = new ArrayList<>();
     private List<User> mentorList = new ArrayList<>(); 
     private List<User> officeWorkerList = new ArrayList<>(); 
     private List<User> managerList = new ArrayList<>(); 
@@ -42,6 +46,7 @@ public class DataHandler {
     public void saveDataToFile(String filename) {
 
     }
+
 
     public void addUser(User user) {
         if (user instanceof Student) {
