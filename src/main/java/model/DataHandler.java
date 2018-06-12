@@ -11,14 +11,12 @@ public class DataHandler {
     private List<User> managerList; 
     private List<Assignment> assignmentList;
     
-    public DataHandler(String filename) {
+    public DataHandler() {
         studentList = new ArrayList<>(); 
         mentorList = new ArrayList<>(); 
         officeWorkerList = new ArrayList<>(); 
         managerList = new ArrayList<>(); 
         assignmentList = new ArrayList<>(); 
-
-        readDataFromFile(filename);
     }
 
     public List<User> getStudentList() {
@@ -39,14 +37,6 @@ public class DataHandler {
     
     public List<Assignment> getAssignmentList() {
         return this.assignmentList;
-    }
-
-    private void readDataFromFile(String filename) {
-
-    }
-
-    public void saveDataToFile(String filename) {
-
     }
 
     public void addUser(User user) {
