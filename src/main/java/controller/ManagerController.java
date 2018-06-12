@@ -2,6 +2,8 @@ package controller;
 
 import model.User;
 import java.util.List;
+import model.DataHandler;
+import model.Mentor;
 
 public class ManagerController extends UserController {
 
@@ -10,12 +12,12 @@ public class ManagerController extends UserController {
         super(loggedUser);
     }
 
-    public void addMentor() {
-
+    public void addMentor(DataHandler dataHandler, Mentor mentor) {
+        dataHandler.addUser(mentor);
     }
 
-    public void removeMentor() {
-
+    public void removeMentor(DataHandler dataHandler, Mentor mentor) {
+        dataHandler.removeUser(mentor);
     }
 
     public void editMentor() {

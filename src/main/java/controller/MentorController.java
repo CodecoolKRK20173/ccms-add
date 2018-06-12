@@ -2,6 +2,8 @@ package controller;
 
 import model.User;
 import java.util.List;
+import model.Student;
+import model.DataHandler;
 
 public class MentorController extends UserController {
 
@@ -11,12 +13,12 @@ public class MentorController extends UserController {
     }
 
 
-    public void addStudent() {
-
+    public void addStudent(DataHandler dataHandler, Student student) {
+        dataHandler.addUser(student);
     }
 
-    public void removeStudent() {
-
+    public void removeStudent(DataHandler dataHandler, Student student) {
+        dataHandler.removeUser(student);
     }
 
     public void editStudent() {
