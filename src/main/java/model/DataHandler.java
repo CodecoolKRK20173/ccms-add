@@ -5,14 +5,20 @@ import java.util.List;
 
 public class DataHandler {
 
-    private List<User> studentList = new ArrayList<>(); 
-    private List<User> mentorList = new ArrayList<>(); 
-    private List<User> officeWorkerList = new ArrayList<>(); 
-    private List<User> managerList = new ArrayList<>(); 
-    private List<Assignment> assignmentList = new ArrayList<>(); 
+    private List<User> studentList; 
+    private List<User> mentorList; 
+    private List<User> officeWorkerList;
+    private List<User> managerList; 
+    private List<Assignment> assignmentList;
     
     public DataHandler(String filename) {
+        studentList = new ArrayList<>(); 
+        mentorList = new ArrayList<>(); 
+        officeWorkerList = new ArrayList<>(); 
+        managerList = new ArrayList<>(); 
+        assignmentList = new ArrayList<>(); 
 
+        readDataFromFile(filename);
     }
 
     public List<User> getStudentList() {
@@ -20,15 +26,15 @@ public class DataHandler {
     }
 
     public List<User> getMentorList() {
-        return this.studentList;
+        return this.mentorList;
     }    
     
     public List<User> getOfficeWorkerList() {
-        return this.studentList;
+        return this.officeWorkerList;
     }    
     
     public List<User> getManagerList() {
-        return this.studentList;
+        return this.managerList;
     }    
     
     public List<Assignment> getAssignmentList() {
@@ -47,11 +53,11 @@ public class DataHandler {
         if (user instanceof Student) {
             studentList.add(user);
         } else if (user instanceof Mentor) {
-            studentList.add(user);
+            mentorList.add(user);
         } else if (user instanceof Manager) {
-            studentList.add(user);
+            managerList.add(user);
         } else if (user instanceof OfficeWorker) {
-            studentList.add(user);
+            officeWorkerList.add(user);
         }
     }
 
@@ -59,11 +65,11 @@ public class DataHandler {
         if (user instanceof Student) {
             studentList.remove(user);
         } else if (user instanceof Mentor) {
-            studentList.remove(user);
+            mentorList.remove(user);
         } else if (user instanceof Manager) {
-            studentList.remove(user);
+            managerList.remove(user);
         } else if (user instanceof OfficeWorker) {
-            studentList.remove(user);
+            officeWorkerList.remove(user);
         }
     }
 
