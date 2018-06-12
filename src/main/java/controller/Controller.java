@@ -12,16 +12,21 @@ public class Controller {
 
 
     public Controller(DataHandler dataHandler, View view, UserController userController) {
-        this.dataHandler = new DataHandler();
-        this.view = new View();
+        this.dataHandler = dataHandler;
+        this.view = view;
+        this.userController = userController;
     }
 
     public User checkLogin(String login) {
 
+
+        return user;
     }
 
-    public User checkPassword(String password) {
-
+    public User checkPassword(User user, String password) {
+        if(user.getPassword().equals(password)) {
+            return user;
+        }
     }
 
 
