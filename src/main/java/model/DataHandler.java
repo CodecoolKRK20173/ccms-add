@@ -43,7 +43,7 @@ public class DataHandler {
 
     }
 
-    public addUser(User user) {
+    public void addUser(User user) {
         if (user instanceof Student) {
             studentList.add(user);
         } else if (user instanceof Mentor) {
@@ -55,7 +55,7 @@ public class DataHandler {
         }
     }
 
-    public removeUser(User user) {
+    public void removeUser(User user) {
         if (user instanceof Student) {
             studentList.remove(user);
         } else if (user instanceof Mentor) {
@@ -67,23 +67,23 @@ public class DataHandler {
         }
     }
 
-    public editUser(User user) {
+    public void editUser(User user) {
         //
     }
 
-    public addAssignment(Assigment assigment) {
+    public void addAssignment(Assigment assigment) {
         assignmentList.add(assigment);
     }
 
-    public gradeAssignment(Student student, Assigment assigment, int grade) {
+    public void gradeAssignment(Student student, Assigment assigment, int grade) {
 
     }
 
-    public submitAssignment(Student student, Assigment assigment, String link) {
+    public void submitAssignment(Student student, Assigment assigment, String link) {
 
     }
 
-    public checkAttendence() {
+    public void checkAttendence() {
         
     }
 }
