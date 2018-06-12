@@ -6,17 +6,17 @@ import java.io.*;
 
 public class FileHandler {
 
-    private static DataHandler dataHandler;
+    private DataHandler dataHandler;
 
     public FileHandler(DataHandler data){
         this.dataHandler = data;
     }
 
-    public static void saveToFile(){
+    public void saveToFile(){
         try {
             FileOutputStream fileOut = new FileOutputStream("/src/main/resources/usersData.txt");
             ObjectOutputStream out = new ObjectOutputStream(fileOut);
-            out.writeObject(dataHandler);
+            out.writeObject(this.dataHandler);
             out.close();
             fileOut.close();
             System.out.println("\nSerialization Successful... Checkout your specified output file..\n");
@@ -26,18 +26,24 @@ public class FileHandler {
         }
     }
 
-    public static DataHandler readFromFile(){
-        DataHandler data = new DataHandler();
+    public void readFromFile(){
         try {
             FileInputStream fileIn = new FileInputStream("/src/main/resources/usersData.txt");
             ObjectInputStream in = new ObjectInputStream(fileIn);
-            System.out.println("Deserialized Data");
             in.close();
             fileIn.close();
-            data = (DataHandler) in.readObject();
+            this.dataHandler = (DataHandler) in.readObject();
+            System.out.println("Data deserialized.");
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
-        }return data;
+        }
+    }
 
+    public DataHandler getDataHandler() {
+        return dataHandler;
+    }
+
+    public void setDataHandler(DataHandler dataHandler) {
+        this.dataHandler = dataHandler;
     }
 }
