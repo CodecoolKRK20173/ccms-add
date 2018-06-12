@@ -9,7 +9,7 @@ public class DataHandler {
     private List<User> mentorList = new ArrayList<>(); 
     private List<User> officeWorkerList = new ArrayList<>(); 
     private List<User> managerList = new ArrayList<>(); 
-    private List<Assigment> assignmentList = new ArrayList<>(); 
+    private List<Assignment> assignmentList = new ArrayList<>(); 
     
     public DataHandler(String filename) {
 
@@ -31,8 +31,8 @@ public class DataHandler {
         return this.studentList;
     }    
     
-    public List<Assigment> getAssignmentList() {
-        return this.studentList;
+    public List<Assignment> getAssignmentList() {
+        return this.assignmentList;
     }
 
     private void readDataFromFile(String filename) {
@@ -71,16 +71,28 @@ public class DataHandler {
         //
     }
 
-    public void addAssignment(Assigment assigment) {
+    public void addAssignment(Assignment assigment) {
         assignmentList.add(assigment);
     }
 
-    public void gradeAssignment(Student student, Assigment assigment, int grade) {
-
+    public boolean gradeAssignment(Student student, Assignment assigment, int grade) {
+        for (StudentAssignment studentAssignment : student.getAssignmentList()) {
+            if (studentAssignment.getAssignment().equals(assigment)) {
+                studentAssignment.setGrade(grade);
+                return true;
+            }
+        }
+        return false;
     }
 
-    public void submitAssignment(Student student, Assigment assigment, String link) {
-
+    public boolean submitAssignment(Student student, Assignment assigment, String link) {
+        for (StudentAssignment studentAssignment : student.getAssignmentList()) {
+            if (studentAssignment.getAssignment().equals(assigment)) {
+                studentAssignment.setLink(link);
+                return true;
+            }
+        }
+        return false;
     }
 
     public void checkAttendence() {
