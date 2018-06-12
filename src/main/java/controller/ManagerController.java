@@ -4,6 +4,8 @@ import model.User;
 import java.util.List;
 import model.DataHandler;
 import model.Mentor;
+import model.Student;
+import view.View;
 
 public class ManagerController extends UserController {
 
@@ -24,11 +26,11 @@ public class ManagerController extends UserController {
 
     }
 
-    public List<User> listStudents() {
-
+    public List<User> listStudents(View view, List<Student> studentList) {
+        view.printUserList(studentList);
     }
 
-    public List<User> listMentors() {
-
+    public List<User> listMentors(View view, List<Mentor> mentorList) {
+        view.printUserList(mentorList);
     }
 }
