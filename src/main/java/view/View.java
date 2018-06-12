@@ -28,4 +28,6 @@ public class View {
         System.out.println("Name:  " + user.getName() + ",  Surname:  " + user.getSurname());
     }
 
+    
+
 }
