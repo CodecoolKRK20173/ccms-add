@@ -43,6 +43,10 @@ public class MentorController extends UserController {
         view.printUserList(studentList);
     }
 
+    public void listAssignments(List<Assignment> assignmentList) {
+        view.printGeneralAssigmentList(assignmentList);
+    }
+
     public void addAssignment(DataHandler dataHandler) {
         String description = view.getAnswerAsString("Type description of assignment: ");
         String assignmentId = Integer.toString(getLastIndexOfAssignment(dataHandler));
@@ -54,8 +58,21 @@ public class MentorController extends UserController {
         return lastIndexOfAssignment;
     }
 
-    public void gradeAssignment() {
+    public void addAssignmentToStudent(DataHandler dataHandler) {
 
+    }
+
+    public void gradeAssignment(DataHandler dataHandler) {
+        listStudents(dataHandler.getStudentList());
+        String login = view.getAnswerAsString("Which student do you want to grade assignment?: ");
+        
+        listAssignments(dataHandler.getAssignmentList());
+        String assignmentId = view.getAnswerAsString("Which assignment do you want to grade?: ");
+        Assignment assignment = dataHandler.getAssignmentById(assignmentId);
+
+        int grade = view.getAnswerAsInt("Type grade: ");
+
+        dataHandler.gradeAssignment(dataHandler.getStudentByLogin(login), assignment, grade);
     }
 
     public void checkAttendence() {

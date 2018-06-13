@@ -26,6 +26,14 @@ public class View {
         }
     }
 
+    public void printGeneralAssigmentList(List<Assignment> generalAssignmentList) {
+        for (Assignment element : generalAssignmentList){
+            System.out.println(element.getDescription());
+        }
+    }
+
+
+
     public void pressEnterKeyToContinue() {
         System.out.println("Press Enter key to continue...");
         Scanner pressEnter = new Scanner(System.in);

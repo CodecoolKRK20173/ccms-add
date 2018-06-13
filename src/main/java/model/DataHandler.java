@@ -94,10 +94,23 @@ public class DataHandler implements Serializable {
         return findUserInList(officeWorkerList, login);
     }
 
-    public User getStudentByLogin(String login) {
-        return findUserInList(studentList, login);
+    public Student getStudentByLogin(String login) {
+        return (Student)findUserInList(studentList, login);
     }
-    
+
+
+    public Assignment getAssignmentById(String id) {
+        return findAssignmentInList(assignmentList, id);
+    }
+
+    private Assignment findAssignmentInList(List<Assignment> assignmentList, String id) {
+        for(Assignment assignment : assignmentList) {
+            if(assignment.getId().equals((id))) {
+                return assignment;
+            }
+        }
+        return null;
+    }
     
 
     private User findUserInList(List<User> list, String login) {
