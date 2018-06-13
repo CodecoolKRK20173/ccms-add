@@ -4,6 +4,7 @@ import model.DataHandler;
 import view.View;
 import model.User;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class Controller {
@@ -20,29 +21,33 @@ public class Controller {
     }
 
     public User checkLogin(DataHandler dataHandler) {
-        System.out.println("Login:   ");
-        Scanner input = view.getScanner();
-        for (User element : dataHandler.getManagerList()) {
-            if (element.getLogin().equals(input)) {
-                return checkPassword(element);
-            }
-        }
-        for (User element : dataHandler.getMentorList()) {
-            if (element.getLogin().equals(input)) {
-                return checkPassword(element);
-            }
-        }
-        for (User element : dataHandler.getOfficeWorkerList()) {
-            if (element.getLogin().equals(input)) {
-                return checkPassword(element);
-            }
-        }
-        for (User element : dataHandler.getStudentList()) {
-            if (element.getLogin().equals(input)) {
-                return checkPassword(element);
+        boolean loginIncorrect = true;
+        User loggedUser = null;
+        while (loginIncorrect) {
+            System.out.println("Login:   ");
+            Scanner input = view.getScanner();
+
+                loggedUser = userIterator(dataHandler.getStudentList(), input);
+            if (loggedUser == null)
+                loggedUser = userIterator(dataHandler.getManagerList(), input);
+            if (loggedUser == null)
+                loggedUser = userIterator(dataHandler.getMentorList(), input);
+            if (loggedUser == null)
+                loggedUser = userIterator(dataHandler.getOfficeWorkerList(), input);
+            if (loggedUser != null) {
+                loginIncorrect = false;
             }
         }
         System.out.println("no such user");
+        return checkPassword(loggedUser);
+    }
+
+    private User userIterator(List<User> userList, Scanner input) {
+        for (User element : userList) {
+            if (element.getLogin().equals(input)) {
+                return element;
+            }
+        }
         return null;
     }
 
