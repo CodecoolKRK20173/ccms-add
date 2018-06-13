@@ -26,8 +26,8 @@ public class MentorController extends UserController {
 
     }
 
-    public void listStudents(List<Student> studentList) {
-        super.view.printUserList(studentList);
+    public void listStudents(List<User> studentList) {
+        view.printUserList(studentList);
     }
 
     public void addAssignment() {

@@ -26,11 +26,11 @@ public class ManagerController extends UserController {
 
     }
 
-    public void listStudents(List<Student> studentList) {
+    public void listStudents(List<User> studentList) {
         view.printUserList(studentList);
     }
 
-    public void listMentors(List<Mentor> mentorList) {
+    public void listMentors(List<User> mentorList) {
         view.printUserList(mentorList);
     }
 

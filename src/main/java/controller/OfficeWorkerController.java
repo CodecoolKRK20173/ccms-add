@@ -11,8 +11,8 @@ public class OfficeWorkerController extends UserController {
         super(loggedUser, view);
     }
 
-    public List<User> listStudents() {
-
+    public void listStudents(List<User> studentsList) {
+        view.printUserList(studentsList);
     }
 
     public void handleMenu() {

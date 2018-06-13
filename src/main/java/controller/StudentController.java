@@ -24,7 +24,7 @@ public class StudentController extends UserController {
     }
 
     public void listAssignment(List<StudentAssignment> studentAsssignmentList) {
-        view.printUserList(studentAsssignmentList);
+        view.printAssignmentList(studentAsssignmentList);
     }
 
 

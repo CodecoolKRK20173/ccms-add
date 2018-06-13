@@ -1,5 +1,7 @@
 package view;
 
+import model.Assignment;
+import model.StudentAssignment;
 import model.User;
 import java.util.InputMismatchException;
 import java.util.List;
@@ -15,6 +17,12 @@ public class View {
     public void printUserList(List<User> list){
         for (User element : list){
             printNameSurname(element);
+        }
+    }
+
+    public void printAssignmentList(List<StudentAssignment> assignmentList){
+        for (StudentAssignment element : assignmentList){
+            System.out.println(element.getAssignment().getId());
         }
     }
 
@@ -59,5 +67,9 @@ public class View {
             index++;
         }
         System.out.println("    (0) Exit");        
+    }
+
+    public Scanner getScanner() {
+        return scanner;
     }
 }

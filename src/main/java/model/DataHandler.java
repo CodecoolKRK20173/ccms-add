@@ -9,7 +9,7 @@ public class DataHandler implements Serializable {
     private List<User> studentList; 
     private List<User> mentorList; 
     private List<User> officeWorkerList;
-    private List<User> managerList; 
+    private List<User> managerList;
     private List<Assignment> assignmentList;
 
 
