@@ -15,27 +15,41 @@ public class ManagerController extends UserController {
                             "Edit mentor");
     }
 
-    public ManagerController(User loggedUser, View view) {
-        super(loggedUser, view);
+    public ManagerController(User loggedUser, DataHandler dataHandler, View view) {
+        super(loggedUser, dataHandler, view);
     }
 
-    public void addMentor(DataHandler dataHandler) {
+    public void addMentor() {
         String login = view.getAnswerAsString("Type mentor's login: ");
         String password = view.getAnswerAsString("Type mentor's password: ");
         String name = view.getAnswerAsString("Type mentor's name: ");
         String surname = view.getAnswerAsString("Type mentor's surname: ");
         
         dataHandler.addUser(new Mentor(login, password, name, surname));
+        view.printMessage("Mentor added.");        
     }
 
-    public void removeMentor(DataHandler dataHandler) {
-        view.printUserList(dataHandler.getMentorList());        
+    public void removeMentor() {
+        listMentors();        
         view.printMessage("Who remove?");        
-        dataHandler.removeUser(chooseMentor(dataHandler));
+        dataHandler.removeUser(chooseMentor());
         view.printMessage("Mentor removed.");
     }
 
-    private User chooseMentor(DataHandler dataHandler) {
+    public void editMentor() {
+        listMentors();
+        view.printMessage("Who edit?");        
+        User mentor = chooseMentor();
+        
+        String password = view.getAnswerAsString("Type new mentor's password (or nothing): ");
+        String name = view.getAnswerAsString("Type new mentor's name (or nothing): ");
+        String surname = view.getAnswerAsString("Type new mentor's surname (or nothing): ");
+        
+        dataHandler.editUser(mentor, password, name, surname);
+        view.printMessage("Mentor edited.");
+    }
+
+    private User chooseMentor() {
         String login;
         User mentor = null;
 
@@ -46,50 +60,36 @@ public class ManagerController extends UserController {
         return mentor;
     }
 
-    public void editMentor(DataHandler dataHandler) {
-        User mentor;
-        view.printUserList(dataHandler.getMentorList());        
-        view.printMessage("Who edit?");        
-        mentor = chooseMentor(dataHandler);
-        
-        String password = view.getAnswerAsString("Type new mentor's password (or nothing): ");
-        String name = view.getAnswerAsString("Type new mentor's name (or nothing): ");
-        String surname = view.getAnswerAsString("Type new mentor's surname (or nothing): ");
-        
-        dataHandler.editUser(mentor, password, name, surname);
-        view.printMessage("Mentor edited.");
-    }
-
-    public void listStudents(DataHandler dataHandler) {
+    public void listStudents() {
         view.printUserList(dataHandler.getStudentList());
     }
 
-    public void listMentors(DataHandler dataHandler) {
+    public void listMentors() {
         view.printUserList(dataHandler.getMentorList());
     }
 
-    public void handleMenu(DataHandler dataHandler, Integer number) {
+    public void handleMenu(Integer number) {
 
         switch (number) {
             // 1 "List mentors"           
             case 1:
-                listMentors(dataHandler);
+                listMentors();
                 break;
             // 2 "List students"
             case 2:
-                listStudents(dataHandler);
+                listStudents();
                 break;
             // 3 "Add mentor"
             case 3:
-                addMentor(dataHandler);
+                addMentor();
                 break;
             // 4 "Remove mentor"
             case 4:
-                removeMentor(dataHandler);
+                removeMentor();
                 break;
             // 5 "Edit mentor"
             case 5:
-                editMentor(dataHandler);
+                editMentor();
                 break;
             
             default:
