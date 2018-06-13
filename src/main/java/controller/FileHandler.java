@@ -14,7 +14,7 @@ public class FileHandler {
 
     public void saveToFile(){
         try {
-            FileOutputStream fileOut = new FileOutputStream("/src/main/resources/usersData.txt");
+            FileOutputStream fileOut = new FileOutputStream("src/main/resources/usersData.txt");
             ObjectOutputStream out = new ObjectOutputStream(fileOut);
             out.writeObject(this.dataHandler);
             out.close();
@@ -28,11 +28,11 @@ public class FileHandler {
 
     public void readFromFile(){
         try {
-            FileInputStream fileIn = new FileInputStream("/src/main/resources/usersData.txt");
+            FileInputStream fileIn = new FileInputStream("src/main/resources/usersData.txt");
             ObjectInputStream in = new ObjectInputStream(fileIn);
+            this.dataHandler = (DataHandler) in.readObject();
             in.close();
             fileIn.close();
-            this.dataHandler = (DataHandler) in.readObject();
             System.out.println("Data deserialized.");
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
