@@ -1,11 +1,10 @@
 package controller;
 
-import model.User;
+import model.*;
 import view.View;
 import java.util.List;
 
 public class OfficeWorkerController extends UserController {
-
 
     public OfficeWorkerController(User loggedUser, View view) {
         super(loggedUser, view);
@@ -15,9 +14,7 @@ public class OfficeWorkerController extends UserController {
         view.printUserList(studentsList);
     }
 
-    public void handleMenu() {
-
+    public void handleMenu(DataHandler dataHandler, String number) {
+        
     }
-
-
 }

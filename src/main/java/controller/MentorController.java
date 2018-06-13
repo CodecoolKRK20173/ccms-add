@@ -1,18 +1,14 @@
 package controller;
 
-import model.User;
-import java.util.List;
-import model.Student;
-import model.DataHandler;
+import model.*;
 import view.View;
+import java.util.List;
 
 public class MentorController extends UserController {
-
 
     public MentorController(User loggedUser, View view) {
         super(loggedUser, view);
     }
-
 
     public void addStudent(DataHandler dataHandler, Student student) {
         dataHandler.addUser(student);
@@ -42,9 +38,7 @@ public class MentorController extends UserController {
 
     }
 
-
-    public void handleMenu() {
-
+    public void handleMenu(DataHandler dataHandler, String number) {
+        
     }
-
 }
