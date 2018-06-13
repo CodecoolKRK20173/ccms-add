@@ -26,6 +26,7 @@ public class View {
         }
     }
 
+
     public void pressEnterKeyToContinue() {
         System.out.println("Press Enter key to continue...");
         Scanner pressEnter = new Scanner(System.in);
