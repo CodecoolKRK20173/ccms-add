@@ -59,6 +59,10 @@ public class View {
         return input;
     }
 
+    public void printMessage(String message) {
+        System.out.println(message);
+    }
+
     public void printMenu(List<String> menu) {
         System.out.printf("%nWhat would you like to do:%n");
         int index = 1;
