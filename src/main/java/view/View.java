@@ -15,8 +15,8 @@ public class View {
     }
 
     public void printUserList(List<User> list){
-        for (User element : list){
-            printNameSurname(element);
+        for (User user : list) {
+            System.out.println(user.toString());
         }
     }
 
@@ -56,6 +56,7 @@ public class View {
                 System.err.println("InputMismatchException");
             }
         }
+        scanner.nextLine();
         return input;
     }
 
