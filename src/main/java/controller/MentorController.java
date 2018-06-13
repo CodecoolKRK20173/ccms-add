@@ -1,5 +1,6 @@
 package controller;
 
+import model.Assignment;
 import model.User;
 import java.util.List;
 import model.Student;
@@ -26,29 +27,31 @@ public class MentorController extends UserController {
 
     public void removeStudent(DataHandler dataHandler) {
         listStudents(dataHandler.getStudentList());
-
         String login = view.getAnswerAsString("Which student do you want to remove?: ");
 
         dataHandler.removeUser(dataHandler.getStudentByLogin(login));
-
     }
 
     public void editStudent(DataHandler dataHandler) {
         listStudents(dataHandler.getStudentList());
-
-
         String login = view.getAnswerAsString("Which student do you want to edit?: ");
 
         dataHandler.editUser(dataHandler.getStudentByLogin(login));
-
     }
 
     public void listStudents(List<User> studentList) {
         view.printUserList(studentList);
     }
 
-    public void addAssignment() {
+    public void addAssignment(DataHandler dataHandler) {
+        String description = view.getAnswerAsString("Type description of assignment: ");
+        String assignmentId = Integer.toString(getLastIndexOfAssignment(dataHandler));
+        dataHandler.addAssignment(new Assignment(assignmentId, description));
+    }
 
+    public int getLastIndexOfAssignment(DataHandler datahandler) {
+        int lastIndexOfAssignment = datahandler.getAssignmentList().size();
+        return lastIndexOfAssignment;
     }
 
     public void gradeAssignment() {
