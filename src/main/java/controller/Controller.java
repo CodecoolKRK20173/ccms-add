@@ -11,38 +11,36 @@ public class Controller {
 
     private DataHandler dataHandler;
     private View view;
-    private UserController userController;
 
 
-    public Controller(DataHandler dataHandler, View view, UserController userController) {
-        this.dataHandler = dataHandler;
-        this.view = view;
-        this.userController = userController;
+    public Controller() {
+        this.dataHandler = new DataHandler();
+        this.view = new View();
     }
 
     public User checkLogin(DataHandler dataHandler) {
-        boolean loginIncorrect = true;
-        User loggedUser = null;
-        while (loginIncorrect) {
+        User loggedUser;
+        while (true) {
             System.out.println("Login:   ");
-            Scanner input = view.getScanner();
+            Scanner scanner = new Scanner(System.in);
+            String login = scanner.nextLine();
 
-                loggedUser = userIterator(dataHandler.getStudentList(), input);
+                loggedUser = userIterator(dataHandler.getStudentList(), login);
             if (loggedUser == null)
-                loggedUser = userIterator(dataHandler.getManagerList(), input);
+                loggedUser = userIterator(dataHandler.getManagerList(), login);
             if (loggedUser == null)
-                loggedUser = userIterator(dataHandler.getMentorList(), input);
+                loggedUser = userIterator(dataHandler.getMentorList(), login);
             if (loggedUser == null)
-                loggedUser = userIterator(dataHandler.getOfficeWorkerList(), input);
+                loggedUser = userIterator(dataHandler.getOfficeWorkerList(), login);
             if (loggedUser != null) {
-                loginIncorrect = false;
+                break;
             }
+            System.out.println("no such user");
         }
-        System.out.println("no such user");
         return checkPassword(loggedUser);
     }
 
-    private User userIterator(List<User> userList, Scanner input) {
+    private User userIterator(List<User> userList, String input) {
         for (User element : userList) {
             if (element.getLogin().equals(input)) {
                 return element;
@@ -55,8 +53,9 @@ public class Controller {
         boolean passwordIncorrect = true;
         while(passwordIncorrect) {
             System.out.println("Password:   ");
-            Scanner inputPass = view.getScanner();
-            if (user.getPassword().equals(inputPass)) {
+            Scanner scanner = new Scanner(System.in);
+            String password = scanner.nextLine();
+            if (user.getPassword().equals(password)) {
                passwordIncorrect = false;
             }
             else {
@@ -66,5 +65,7 @@ public class Controller {
         return user;
     }
 
-
+    public DataHandler getDataHandler() {
+        return dataHandler;
+    }
 }
