@@ -45,7 +45,7 @@ public class View {
     }
 
     public void printNameSurname(User user){
-        System.out.println("Name:  " + user.getName() + ",  Surname:  " + user.getSurname());
+        System.out.println("Name:  " + user.getName() + ",  Surname:  " + user.getSurname() + "  login:  " + user.getLogin() + "  password:  " + user.getPassword());
     }
 
     public String getAnswerAsString(String question) {

@@ -14,9 +14,10 @@ public class Main {
     public static void main(String[] args) {
         Controller app = new Controller();
         fileHandler = new FileHandler(app.getDataHandler());
-        Manager manager = new Manager("q","w","dawid","grygier");
-        app.getDataHandler().getManagerList().add(manager);
-        fileHandler.readFromFile();
+        //Manager manager = new Manager("q","w","dawid","grygier");
+        //app.getDataHandler().getManagerList().add(manager);
+        fileHandler.readFromFile(app);
+        app.getView().printUserList(fileHandler.getDataHandler().getManagerList());
         User loggedUser = app.checkLogin(app.getDataHandler());
         ManagerController managerController = new ManagerController(loggedUser, new View());
         while(true){

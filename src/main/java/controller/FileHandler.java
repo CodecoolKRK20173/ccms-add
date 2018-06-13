@@ -26,11 +26,12 @@ public class FileHandler {
         }
     }
 
-    public void readFromFile(){
+    public void readFromFile(Controller controller){
         try {
             FileInputStream fileIn = new FileInputStream("src/main/resources/usersData.txt");
             ObjectInputStream in = new ObjectInputStream(fileIn);
             this.dataHandler = (DataHandler) in.readObject();
+            controller.setDataHandler(this.dataHandler);
             in.close();
             fileIn.close();
             System.out.println("Data deserialized.");

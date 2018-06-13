@@ -41,9 +41,14 @@ public class Controller {
     }
 
     private User userIterator(List<User> userList, String input) {
+        System.out.println("iterator" + "index: " + userList.size());
         for (User element : userList) {
             if (element.getLogin().equals(input)) {
+                System.out.println("mam");
                 return element;
+            }
+            else{
+                System.out.println("npe");
             }
         }
         return null;
@@ -67,5 +72,13 @@ public class Controller {
 
     public DataHandler getDataHandler() {
         return dataHandler;
+    }
+
+    public View getView() {
+        return view;
+    }
+
+    public void setDataHandler(DataHandler dataHandler) {
+        this.dataHandler = dataHandler;
     }
 }
