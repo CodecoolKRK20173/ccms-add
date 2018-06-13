@@ -65,6 +65,50 @@ public class DataHandler implements Serializable {
         }
     }
 
+    public User getUserByLogin(String login) {
+        User user = null;
+        
+        user = findUserInList(studentList, login);
+
+        if (user == null) {
+            findUserInList(mentorList, login);
+        }
+        if (user == null) {
+            findUserInList(officeWorkerList, login);
+        }
+        if (user == null) {
+            findUserInList(managerList, login);
+        } 
+        return user;
+    }
+
+    public User getMentorByLogin(String login) {
+        return findUserInList(mentorList, login);
+    }
+
+    public User getManagerByLogin(String login) {
+        return findUserInList(managerList, login);
+    }
+
+    public User getOfficeWorkerByLogin(String login) {
+        return findUserInList(officeWorkerList, login);
+    }
+
+    public User getStudentByLogin(String login) {
+        return findUserInList(studentList, login);
+    }
+    
+    
+
+    private User findUserInList(List<User> list, String login) {
+        for(User user : list) {
+            if (user.getLogin().equals(login)) {
+                return user;
+            }
+        }
+        return null;
+    }
+
     public void editUser(User user) {
         //
     }
