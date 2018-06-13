@@ -12,7 +12,6 @@ public class DataHandler implements Serializable {
     private List<User> managerList;
     private List<Assignment> assignmentList;
 
-
     public DataHandler() {
         studentList = new ArrayList<>();
         mentorList = new ArrayList<>(); 
@@ -71,14 +70,15 @@ public class DataHandler implements Serializable {
         user = findUserInList(studentList, login);
 
         if (user == null) {
-            findUserInList(mentorList, login);
+            user = findUserInList(mentorList, login);
         }
         if (user == null) {
-            findUserInList(officeWorkerList, login);
+            user =findUserInList(officeWorkerList, login);
         }
         if (user == null) {
-            findUserInList(managerList, login);
+            user = findUserInList(managerList, login);
         } 
+        
         return user;
     }
 
@@ -98,7 +98,6 @@ public class DataHandler implements Serializable {
         return (Student)findUserInList(studentList, login);
     }
 
-
     public Assignment getAssignmentById(String id) {
         return findAssignmentInList(assignmentList, id);
     }
@@ -112,10 +111,9 @@ public class DataHandler implements Serializable {
         return null;
     }
 
-
     private User findUserInList(List<User> list, String login) {
-        for(User user : list) {
-            if (user.getLogin().equals(login)) {
+        for(User user : list) {            
+            if (user.getLogin().equals(login)) {                
                 return user;
             }
         }
