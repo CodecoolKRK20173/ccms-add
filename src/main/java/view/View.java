@@ -14,53 +14,20 @@ public class View {
         this.scanner = new Scanner(System.in);
     }
 
-    public void printUserList(List<User> list){
-        for (User user : list) {
-            System.out.println(user.toString());
-        }
-    }
-
-    public void printAssignmentList(List<StudentAssignment> assignmentList){
-        for (StudentAssignment element : assignmentList){
-            System.out.println(element.getAssignment().getId());
-        }
-    }
-
-    public void printGeneralAssigmentList(List<Assignment> generalAssignmentList) {
-        for (Assignment element : generalAssignmentList){
-            System.out.println(element.getDescription());
-        }
-    }
-
-
-    public void pressEnterKeyToContinue() {
-        System.out.println("Press Enter key to continue...");
-        Scanner pressEnter = new Scanner(System.in);
-        String input = pressEnter.nextLine();
-    }
-
-    public void clearScreen() {
-        System.out.print("\033[H\033[2J");
-        System.out.flush();
-    }
-
-    public void printNameSurname(User user){
-        System.out.println("Name:  " + user.getName() + ",  Surname:  " + user.getSurname() + "  login:  " + user.getLogin() + "  password:  " + user.getPassword());
-    }
-
     public String getAnswerAsString(String question) {
         System.out.print(question);
         return scanner.nextLine();
     }
 
     public Integer getAnswerAsInt(String question) {
-        System.out.print(question);
         Integer input = null;
-        while (input == null ) {
+        while (input == null) {
+            System.out.print(question);            
             try {
-                input = scanner.nextInt();
+                input = scanner.nextInt(); 
             } catch (InputMismatchException e) {
-                System.err.println("InputMismatchException");
+                scanner.nextLine();
+                System.err.println("Type integer!");
             }
         }
         scanner.nextLine();
@@ -78,10 +45,53 @@ public class View {
             System.out.printf("    (%d) %s%n", index, menuItem);
             index++;
         }
-        System.out.println("    (0) Exit");        
+        System.out.println("    (0) Exit");
     }
 
-    public Scanner getScanner() {
-        return scanner;
+    public void printUserList(List<User> list) {
+        if (!isEmptyList(list)) {
+            for (User user : list) {
+                System.out.println(user.toString());
+            }
+        } 
     }
+
+    public void printStudentAssignmentList(List<StudentAssignment> list) {
+        if (!isEmptyList(list)) {
+            for (StudentAssignment item : list) {
+                System.out.println(item.toString());
+            }
+        } 
+    }
+
+    public void printAssigmentList(List<Assignment> list) {
+        if (!isEmptyList(list)) {
+            for (Assignment item : list) {
+                System.out.println(item.toString());
+            }
+        }
+    }
+
+    private boolean isEmptyList(List list) {
+        if (list.isEmpty()) {
+            System.out.println("List is empty.");
+            return true;
+        }
+        return false;
+    }
+
+    public void clearScreen() {
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
+    }
+
+    /*
+     * public void pressEnterKeyToContinue() {
+     * System.out.println("Press Enter key to continue..."); Scanner pressEnter =
+     * new Scanner(System.in); String input = pressEnter.nextLine(); }
+     * 
+     * public void printNameSurname(User user){ System.out.println("Name:  " +
+     * user.getName() + ",  Surname:  " + user.getSurname() + "  login:  " +
+     * user.getLogin() + "  password:  " + user.getPassword()); }
+     */
 }
