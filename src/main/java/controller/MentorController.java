@@ -2,6 +2,8 @@ package controller;
 
 import model.Assignment;
 import model.User;
+
+import java.util.Arrays;
 import java.util.List;
 import model.Student;
 import model.DataHandler;
@@ -9,6 +11,16 @@ import view.View;
 import java.util.List;
 
 public class MentorController extends UserController {
+
+    {
+        menu = Arrays.asList("List students",
+                            "Add assignment",
+                            "Add assignment submitted by student",
+                            "Check attendance",
+                            "Add student",
+                            "Remove student",
+                            "Edit student");
+    }
 
     public MentorController(User loggedUser, View view) {
         super(loggedUser, view);
@@ -75,11 +87,43 @@ public class MentorController extends UserController {
         dataHandler.gradeAssignment(dataHandler.getStudentByLogin(login), assignment, grade);
     }
 
-    public void checkAttendence() {
+    public void checkAttendance() {
 
     }
 
     public void handleMenu(DataHandler dataHandler, String number) {
-        
+
+        switch (number) {
+            // 1 "List students"
+            case "1":
+                listStudents(dataHandler.getStudentList());
+                break;
+            // 2 "Add assignment"
+            case "2":
+                addAssignment(dataHandler);
+                break;
+            // 3 "Add assignment to student"
+            case "3":
+                addAssignmentToStudent(dataHandler);
+                break;
+            // 4 "Check attendance"
+            case "4":
+                checkAttendance();
+                break;
+            // 5 "Add student"
+            case "5":
+                addStudent(dataHandler);
+                break;
+            // 6 "Remove student"
+            case "6":
+                removeStudent(dataHandler);
+                break;
+            // 7 "Edit student"
+            case "7":
+                editStudent(dataHandler);
+                break;
+            default:
+                break;
+        }
     }
 }
