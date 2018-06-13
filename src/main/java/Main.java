@@ -23,8 +23,9 @@ public class Main {
         while(true){
             managerController.getView().printMenu(managerController.getMenu());
             Scanner scanner = new Scanner(System.in);
-            String choice = scanner.nextLine();
-            if (choice.equals("0")){
+            Integer choice = scanner.nextInt();
+            scanner.nextLine();
+            if (choice.equals(0)){
                 fileHandler.saveToFile();
                 break;
             }
