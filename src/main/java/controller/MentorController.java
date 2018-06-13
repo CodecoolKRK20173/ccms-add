@@ -91,35 +91,35 @@ public class MentorController extends UserController {
 
     }
 
-    public void handleMenu(DataHandler dataHandler, String number) {
+    public void handleMenu(DataHandler dataHandler, Integer number) {
 
         switch (number) {
             // 1 "List students"
-            case "1":
+            case 1:
                 listStudents(dataHandler.getStudentList());
                 break;
             // 2 "Add assignment"
-            case "2":
+            case 2:
                 addAssignment(dataHandler);
                 break;
             // 3 "Add assignment to student"
-            case "3":
+            case 3:
                 addAssignmentToStudent(dataHandler);
                 break;
             // 4 "Check attendance"
-            case "4":
+            case 4:
                 checkAttendance();
                 break;
             // 5 "Add student"
-            case "5":
+            case 5:
                 addStudent(dataHandler);
                 break;
             // 6 "Remove student"
-            case "6":
+            case 6:
                 removeStudent(dataHandler);
                 break;
             // 7 "Edit student"
-            case "7":
+            case 7:
                 editStudent(dataHandler);
                 break;
             default:

@@ -48,5 +48,11 @@ public abstract class User implements Serializable {
         this.name = name;
     }
 
-
+    public String toString() {
+        return String.format("Login: %s, name: %s, surname: %s (for tests password: %s) ",
+                             this.login,
+                             this.name,
+                             this.surname,
+                             this.password);
+    }
 }

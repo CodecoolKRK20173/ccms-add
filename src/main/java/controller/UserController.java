@@ -23,6 +23,6 @@ public abstract class UserController {
         return view;
     }
 
-    public abstract void handleMenu(DataHandler dataHandler, String number);
-
+    public abstract void handleMenu(DataHandler dataHandler, Integer number);
+    
 }

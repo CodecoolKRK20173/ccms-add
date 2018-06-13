@@ -14,16 +14,18 @@ public class Main {
     public static void main(String[] args) {
         Controller app = new Controller();
         fileHandler = new FileHandler(app.getDataHandler());
-        Manager manager = new Manager("q","w","dawid","grygier");
-        app.getDataHandler().getManagerList().add(manager);
-        fileHandler.readFromFile();
+        //Manager manager = new Manager("q","w","dawid","grygier");
+        //app.getDataHandler().getManagerList().add(manager);
+        fileHandler.readFromFile(app);
+        app.getView().printUserList(fileHandler.getDataHandler().getManagerList());
         User loggedUser = app.checkLogin(app.getDataHandler());
         ManagerController managerController = new ManagerController(loggedUser, new View());
         while(true){
             managerController.getView().printMenu(managerController.getMenu());
             Scanner scanner = new Scanner(System.in);
-            String choice = scanner.nextLine();
-            if (choice.equals("0")){
+            Integer choice = scanner.nextInt();
+            scanner.nextLine();
+            if (choice.equals(0)){
                 fileHandler.saveToFile();
                 break;
             }

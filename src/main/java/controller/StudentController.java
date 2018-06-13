@@ -24,7 +24,7 @@ public class StudentController extends UserController {
         view.printAssignmentList(studentAsssignmentList);
     }
 
-    public void handleMenu(DataHandler dataHandler, String number) {
+    public void handleMenu(DataHandler dataHandler, Integer number) {
         
     }
 }

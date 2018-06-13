@@ -20,10 +20,10 @@ public class OfficeWorkerController extends UserController {
         view.printUserList(studentsList);
     }
 
-    public void handleMenu(DataHandler dataHandler, String number) {
+    public void handleMenu(DataHandler dataHandler, Integer number) {
         switch (number) {
             // 1 "List students"
-            case "1":
+            case 1:
                 listStudents(dataHandler.getStudentList());
             default:
                 break;
