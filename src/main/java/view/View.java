@@ -26,6 +26,13 @@ public class View {
         }
     }
 
+    public void printGeneralAssigmentList(List<Assignment> generalAssignmentList) {
+        for (Assignment element : generalAssignmentList){
+            System.out.println(element.getDescription());
+        }
+    }
+
+
     public void pressEnterKeyToContinue() {
         System.out.println("Press Enter key to continue...");
         Scanner pressEnter = new Scanner(System.in);
@@ -38,7 +45,7 @@ public class View {
     }
 
     public void printNameSurname(User user){
-        System.out.println("Name:  " + user.getName() + ",  Surname:  " + user.getSurname());
+        System.out.println("Name:  " + user.getName() + ",  Surname:  " + user.getSurname() + "  login:  " + user.getLogin() + "  password:  " + user.getPassword());
     }
 
     public String getAnswerAsString(String question) {

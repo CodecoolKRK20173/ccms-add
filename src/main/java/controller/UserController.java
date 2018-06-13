@@ -19,6 +19,10 @@ public abstract class UserController {
         return menu;
     }
 
-    public abstract void handleMenu(DataHandler dataHandler, Integer number);
+    public View getView() {
+        return view;
+    }
 
+    public abstract void handleMenu(DataHandler dataHandler, Integer number);
+    
 }
