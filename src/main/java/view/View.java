@@ -33,7 +33,6 @@ public class View {
     }
 
 
-
     public void pressEnterKeyToContinue() {
         System.out.println("Press Enter key to continue...");
         Scanner pressEnter = new Scanner(System.in);
@@ -65,6 +64,10 @@ public class View {
             }
         }
         return input;
+    }
+
+    public void printMessage(String message) {
+        System.out.println(message);
     }
 
     public void printMenu(List<String> menu) {

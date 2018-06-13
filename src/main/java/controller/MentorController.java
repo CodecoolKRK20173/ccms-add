@@ -6,9 +6,9 @@ import java.util.List;
 import model.Student;
 import model.DataHandler;
 import view.View;
+import java.util.List;
 
 public class MentorController extends UserController {
-
 
     public MentorController(User loggedUser, View view) {
         super(loggedUser, view);
@@ -36,7 +36,7 @@ public class MentorController extends UserController {
         listStudents(dataHandler.getStudentList());
         String login = view.getAnswerAsString("Which student do you want to edit?: ");
 
-        dataHandler.editUser(dataHandler.getStudentByLogin(login));
+        //dataHandler.editUser(dataHandler.getStudentByLogin(login));
     }
 
     public void listStudents(List<User> studentList) {
@@ -79,9 +79,7 @@ public class MentorController extends UserController {
 
     }
 
-
-    public void handleMenu() {
-
+    public void handleMenu(DataHandler dataHandler, String number) {
+        
     }
-
 }

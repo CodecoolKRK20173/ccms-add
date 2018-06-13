@@ -1,18 +1,15 @@
 package controller;
 
+import model.*;
+import view.View;
 import java.util.Arrays;
 import java.util.List;
-import model.StudentAssignment;
-import model.User;
-import view.View;
 
 public class StudentController extends UserController {
-
 
     {
         menu = Arrays.asList("View my grades", "Submit assignment", "Exit CcMS");
     }
-
 
     public StudentController(User loggedUser, View view) {
         super(loggedUser, view);
@@ -27,9 +24,7 @@ public class StudentController extends UserController {
         view.printAssignmentList(studentAsssignmentList);
     }
 
-
-    public void handleMenu() {
-
+    public void handleMenu(DataHandler dataHandler, String number) {
+        
     }
-
 }

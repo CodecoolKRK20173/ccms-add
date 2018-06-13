@@ -111,7 +111,7 @@ public class DataHandler implements Serializable {
         }
         return null;
     }
-    
+
 
     private User findUserInList(List<User> list, String login) {
         for(User user : list) {
@@ -122,8 +122,10 @@ public class DataHandler implements Serializable {
         return null;
     }
 
-    public void editUser(User user) {
-        //
+    public void editUser(User user, String password, String name, String surname) {
+        user.setPassword(password);
+        user.setName(name);
+        user.setSurname(surname);        
     }
 
     public void addAssignment(Assignment assigment) {

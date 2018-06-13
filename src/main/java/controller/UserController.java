@@ -1,6 +1,6 @@
 package controller;
 
-import model.User;
+import model.*;
 import view.View;
 import java.util.List;
 
@@ -9,8 +9,6 @@ public abstract class UserController {
     protected List<String> menu;
     private User loggedUser;
     protected View view;
-
-
 
     public UserController(User loggedUser, View view) {
         this.loggedUser = loggedUser;
@@ -21,6 +19,10 @@ public abstract class UserController {
         return menu;
     }
 
-    public abstract void handleMenu();
+    public View getView() {
+        return view;
+    }
+
+    public abstract void handleMenu(DataHandler dataHandler, String number);
 
 }
