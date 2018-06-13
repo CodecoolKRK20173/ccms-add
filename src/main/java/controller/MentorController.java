@@ -62,7 +62,7 @@ public class MentorController extends UserController {
 
     }
 
-    public void handleMenu(DataHandler dataHandler, String number) {
+    public void handleMenu(DataHandler dataHandler, Integer number) {
         
     }
 }

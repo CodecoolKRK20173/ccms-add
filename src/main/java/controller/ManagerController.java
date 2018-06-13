@@ -68,27 +68,27 @@ public class ManagerController extends UserController {
         view.printUserList(dataHandler.getMentorList());
     }
 
-    public void handleMenu(DataHandler dataHandler, String number) {
+    public void handleMenu(DataHandler dataHandler, Integer number) {
 
         switch (number) {
             // 1 "List mentors"           
-            case "1":
+            case 1:
                 listMentors(dataHandler);
                 break;
             // 2 "List students"
-            case "2":
+            case 2:
                 listStudents(dataHandler);
                 break;
             // 3 "Add mentor"
-            case "3":
+            case 3:
                 addMentor(dataHandler);
                 break;
             // 4 "Remove mentor"
-            case "4":
+            case 4:
                 removeMentor(dataHandler);
                 break;
             // 5 "Edit mentor"
-            case "5":
+            case 5:
                 editMentor(dataHandler);
                 break;
             

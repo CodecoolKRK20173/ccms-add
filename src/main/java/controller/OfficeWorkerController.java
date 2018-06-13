@@ -14,7 +14,7 @@ public class OfficeWorkerController extends UserController {
         view.printUserList(studentsList);
     }
 
-    public void handleMenu(DataHandler dataHandler, String number) {
+    public void handleMenu(DataHandler dataHandler, Integer number) {
         
     }
 }
