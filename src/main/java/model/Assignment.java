@@ -27,4 +27,8 @@ public class Assignment implements Serializable {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    public String toString() {
+        return String.format("Id: %s, description: %s", id, description);
+    }
 }
