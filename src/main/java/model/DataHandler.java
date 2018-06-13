@@ -108,9 +108,15 @@ public class DataHandler implements Serializable {
     }
 
     public void editUser(User user, String password, String name, String surname) {
-        user.setPassword(password);
-        user.setName(name);
-        user.setSurname(surname);        
+        if (!password.equals("")) {
+            user.setPassword(password);
+        }
+        if (!name.equals("")) {
+            user.setName(name);
+        }
+        if (!surname.equals("")) {
+            user.setSurname(surname);
+        }        
     }
 
     public void addAssignment(Assignment assigment) {
