@@ -87,7 +87,7 @@ public class MentorController extends UserController {
         view.printUserList(dataHandler.getStudentList());
     }
 
-    public void listAssignments() {
+    public void listAssignments() throws Exception {
         view.printAssigmentList(dataHandler.getAssignmentList());
     }
 
@@ -105,12 +105,6 @@ public class MentorController extends UserController {
         dataHandler.addAssignment(new Assignment(assignmentId, description));
     }
 
-    // do poprawy największe id moze różnić się od rozmiaru listy
-    public int getLastIndexOfAssignment() {
-        int lastIndexOfAssignment = dataHandler.getAssignmentList().size();
-        return lastIndexOfAssignment;
-    }
-
     public void addAssignmentToStudent() {
 
     }
@@ -120,13 +114,12 @@ public class MentorController extends UserController {
         try {  
             listStudents();
             String login = view.getAnswerAsString("Type student's login: ");
-    //if empty end
+
             listAssignments();
             String assignmentId = view.getAnswerAsString("Type assignment's id: ");
             Assignment assignment = dataHandler.getAssignmentById(assignmentId);
 
             int grade = view.getAnswerAsInt("Type grade: ");
-
             dataHandler.gradeAssignment(dataHandler.getStudentByLogin(login), assignment, grade);
         } catch (Exception e) {
             view.printMessage(e.getMessage());                    
@@ -179,8 +172,13 @@ public class MentorController extends UserController {
                 break;
             // 5 "List assignments"
             case 5:
-                listAssignments();
-                break;
+                try {  
+                    listAssignments();
+                    break;
+                } catch (Exception e) {
+                    view.printMessage(e.getMessage());  
+                    break;                  
+                }  
             // 6 "Add assignment"
             case 6:
                 addAssignment();
