@@ -16,10 +16,13 @@ public class StudentController extends UserController {
         super(loggedUser, dataHandler, view);
     }
 
+<<<<<<< HEAD
+=======
     public void listStudentAssignments() {
         view.printStudentAssignmentList(((Student) loggedUser).getAssignmentList());
     }
 
+>>>>>>> e46cac35ed5cf082e1ea2ad43681edd268e1c870
     public void submitAssignment() {
 //if empty end
         listStudentAssignments();
@@ -31,6 +34,20 @@ public class StudentController extends UserController {
         dataHandler.submitAssignment((Student) loggedUser, assignment, link);
     }
 
+<<<<<<< HEAD
+    public void listAssignment(List<StudentAssignment> studentAssignmentList) {
+        view.printAssignmentList(studentAssignmentList);
+    }
+
+    public void handleMenu(DataHandler dataHandler, Integer number) {
+        switch(number) {
+            // 1 "View my grades"
+            case 1:
+                listAssignment();
+            // 2 "Submit assignment"
+            case 2:
+               submitAssignment();
+=======
     public void handleMenu(Integer number) {
 
         switch (number) {
@@ -45,6 +62,7 @@ public class StudentController extends UserController {
             
             default:
                 break;
+>>>>>>> e46cac35ed5cf082e1ea2ad43681edd268e1c870
         }
     }
 }

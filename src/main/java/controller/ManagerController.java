@@ -22,7 +22,15 @@ public class ManagerController extends UserController {
     }
 
     public void addMentor() {
-        String login = view.getAnswerAsString("Type mentor's login: ");
+        boolean uniquelogin = false;
+        String login = "";
+        while (!uniquelogin) {
+            login =  view.getAnswerAsString("Type mentor\'s login: ");
+            uniquelogin = this.dataHandler.isLoginUnique(this.dataHandler.getMentorList(), login);
+            if (!uniquelogin){
+                System.out.println("login taken, try again");
+            }
+        }
         String password = view.getAnswerAsString("Type mentor's password: ");
         String name = view.getAnswerAsString("Type mentor's name: ");
         String surname = view.getAnswerAsString("Type mentor's surname: ");

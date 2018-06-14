@@ -26,7 +26,15 @@ public class MentorController extends UserController {
 
     public void addStudent() {
 
-        String login = view.getAnswerAsString("Type student\'s login: ");
+        boolean uniquelogin = false;
+        String login = "";
+        while (!uniquelogin) {
+            login =  view.getAnswerAsString("Type student\'s login: ");
+            uniquelogin = this.dataHandler.isLoginUnique(this.dataHandler.getStudentList(), login);
+            if (!uniquelogin){
+                System.out.println("login taken, try again");
+            }
+        }
         String password = view.getAnswerAsString("Type student\'s password: ");
         String name = view.getAnswerAsString("Type student\'s name: ");
         String surname = view.getAnswerAsString("Type student\'s surname: ");
@@ -85,8 +93,16 @@ public class MentorController extends UserController {
     }
 
     public void addAssignment() {
+        boolean uniqueId = false;
+        String assignmentId = "";
+        while (!uniqueId) {
+            assignmentId =  view.getAnswerAsString("Type assignment name: ");
+            uniqueId = this.dataHandler.isIdUnique(this.dataHandler.getAssignmentList(), assignmentId);
+            if (!uniqueId){
+                System.out.println("Name taken, try again");
+            }
+        }
         String description = view.getAnswerAsString("Type description: ");
-        String assignmentId = Integer.toString(getLastIndexOfAssignment());
         dataHandler.addAssignment(new Assignment(assignmentId, description));
     }
 

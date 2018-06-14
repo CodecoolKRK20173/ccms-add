@@ -156,6 +156,22 @@ public class DataHandler implements Serializable {
         return false;
     }
 
+    public boolean isIdUnique(List<Assignment> assignmentList, String assignmentId){
+        for (Assignment element : assignmentList){
+            if (assignmentId.equals(element.getId()))
+                return false;
+        }
+        return true;
+    }
+
+    public boolean isLoginUnique(List<User> userList, String login){
+        for (User element : userList){
+            if (login.equals(element.getLogin()))
+                return false;
+        }
+        return true;
+    }
+
     public void checkAttendence() {
         
     }
