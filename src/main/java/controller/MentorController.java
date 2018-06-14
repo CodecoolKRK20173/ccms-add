@@ -103,7 +103,23 @@ public class MentorController extends UserController {
     }
 
     public void checkAttendance() {
+        String currentDate = view.getAnswerAsString("Type date: ");
+        for(User student : dataHandler.getStudentList()) {
+            System.out.println("Student: " + student.getName());
+            String attendance = setStudentPresent();
+            ((Student) student).getStudentAttendanceMap().put(currentDate, attendance);
+        }
+    }
 
+    public String setStudentPresent() {
+        System.out.println("1. Present\n2.Not present ");
+        String choice = view.getAnswerAsString("Type 1 or 2.");
+        if(choice == "1"){
+            return "O";
+        }
+        else {
+            return "X";
+        }
     }
 
     public void handleMenu(Integer number) {
