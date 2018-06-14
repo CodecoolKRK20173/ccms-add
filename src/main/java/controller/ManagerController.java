@@ -4,7 +4,6 @@ import model.*;
 import view.View;
 import java.lang.Exception;
 import java.util.Arrays;
-import java.util.List;
 
 
 public class ManagerController extends UserController {

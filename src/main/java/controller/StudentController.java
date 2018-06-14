@@ -3,7 +3,6 @@ package controller;
 import model.*;
 import view.View;
 import java.util.Arrays;
-import java.util.List;
 
 public class StudentController extends UserController {
 
