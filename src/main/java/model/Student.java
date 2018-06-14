@@ -19,4 +19,8 @@ public class Student extends User {
     public List<StudentAssignment> getAssignmentList() {
         return assignmentList;
     }
+
+    public void addAssignment(Assignment assignment) {
+        assignmentList.add(new StudentAssignment(assignment));
+    }
 }

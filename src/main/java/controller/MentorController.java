@@ -72,7 +72,7 @@ public class MentorController extends UserController {
         }
     }
 
-    private User chooseStudent() {
+    private Student chooseStudent() {
         String login;
         User student = null;
 
@@ -80,7 +80,7 @@ public class MentorController extends UserController {
             login = view.getAnswerAsString("Type student's login: ");
             student = dataHandler.getStudentByLogin(login);
         }
-        return student;
+        return (Student) student;
     }
 
     public void listStudents() throws Exception {
@@ -106,21 +106,35 @@ public class MentorController extends UserController {
     }
 
     public void addAssignmentToStudent() {
+        //if students list is not epmty add
+        try {  
+            listStudents();
+            view.printMessage("Choose student: ");        
+            Student student = chooseStudent();
 
+            listAssignments();
+            String assignmentId = view.getAnswerAsString("Type assignment's id: ");
+            Assignment assignment = dataHandler.getAssignmentById(assignmentId);
+
+            student.addAssignment(assignment);
+        } catch (Exception e) {
+            view.printMessage(e.getMessage());                    
+        }
     }
 
     public void gradeAssignment() {
         //if students list is not epmty grade
         try {  
             listStudents();
-            String login = view.getAnswerAsString("Type student's login: ");
+            view.printMessage("Choose student: ");        
+            Student student = chooseStudent();
 
             listAssignments();
             String assignmentId = view.getAnswerAsString("Type assignment's id: ");
             Assignment assignment = dataHandler.getAssignmentById(assignmentId);
 
             int grade = view.getAnswerAsInt("Type grade: ");
-            dataHandler.gradeAssignment(dataHandler.getStudentByLogin(login), assignment, grade);
+            dataHandler.gradeAssignment(student, assignment, grade);
         } catch (Exception e) {
             view.printMessage(e.getMessage());                    
         }

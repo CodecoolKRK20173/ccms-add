@@ -1,6 +1,8 @@
 package model;
 
-public class StudentAssignment {
+import java.io.Serializable;
+
+public class StudentAssignment implements Serializable {
 
     private Assignment assignment;
     private String link;
