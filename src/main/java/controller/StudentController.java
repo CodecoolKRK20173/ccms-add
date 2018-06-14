@@ -18,7 +18,8 @@ public class StudentController extends UserController {
 
     public void listStudentAssignments() throws Exception {
         view.printStudentAssignmentList(((Student) loggedUser).getAssignmentList());
-    }
+}
+
 
     public void submitAssignment() {
         //if student's assignments list is not epmty submit
@@ -34,6 +35,7 @@ public class StudentController extends UserController {
             view.printMessage(e.getMessage());                    
         }
     }
+
 
     public void handleMenu(Integer number) {
 
@@ -54,6 +56,7 @@ public class StudentController extends UserController {
             
             default:
                 break;
+
         }
     }
 }
