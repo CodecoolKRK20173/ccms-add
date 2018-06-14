@@ -21,7 +21,7 @@ public class FileHandler {
             input.close();
             fileIn.close();             
         } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
+            System.out.println("no file, start from scratch!");
         } 
         return dataHandler;
     }
