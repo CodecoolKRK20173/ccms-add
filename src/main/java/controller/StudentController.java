@@ -15,16 +15,22 @@ public class StudentController extends UserController {
         super(loggedUser, view);
     }
 
-
     public void submitAssignment() {
 
     }
 
-    public void listAssignment(List<StudentAssignment> studentAsssignmentList) {
-        view.printAssignmentList(studentAsssignmentList);
+    public void listAssignment(List<StudentAssignment> studentAssignmentList) {
+        view.printAssignmentList(studentAssignmentList);
     }
 
     public void handleMenu(DataHandler dataHandler, Integer number) {
-        
+        switch(number) {
+            // 1 "View my grades"
+            case 1:
+                listAssignment();
+            // 2 "Submit assignment"
+            case 2:
+               submitAssignment();
+        }
     }
 }
