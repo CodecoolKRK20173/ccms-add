@@ -33,4 +33,9 @@ public class StudentAssignment {
     public void setLink(String link) {
         this.link = link;
     }
+
+    public String toString() {
+        return String.format("%s, link: %s, grade: %d",
+                            assignment.toString(), link, grade);
+    }
 }

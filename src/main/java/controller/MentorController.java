@@ -1,33 +1,29 @@
 package controller;
 
-import model.Assignment;
-import model.User;
-
-import java.util.Arrays;
-import java.util.List;
-import model.Student;
-import model.DataHandler;
+import model.*;
 import view.View;
+import java.util.Arrays;
 import java.util.List;
 
 public class MentorController extends UserController {
 
     {
         menu = Arrays.asList("List students",
-                            "Add assignment",
-                            "Add assignment submitted by student",
-                            "Check attendance",
                             "Add student",
                             "Remove student",
-                            "Edit student");
+                            "Edit student",
+                            "List assignments",
+                            "Add assignment",
+                            "Add assignment to student",
+                            "Grade student's assignment",
+                            "Check attendance");
+    }
+        
+    public MentorController(User loggedUser, DataHandler dataHandler, View view) {
+        super(loggedUser, dataHandler, view);
     }
 
-    public MentorController(User loggedUser, View view) {
-        super(loggedUser, view);
-    }
-
-
-    public void addStudent(DataHandler dataHandler) {
+    public void addStudent() {
 
         String login = view.getAnswerAsString("Type student\'s login: ");
         String password = view.getAnswerAsString("Type student\'s password: ");
@@ -35,51 +31,70 @@ public class MentorController extends UserController {
         String surname = view.getAnswerAsString("Type student\'s surname: ");
 
         dataHandler.addUser(new Student(login, password, name, surname));
+        view.printMessage("Student added.");
     }
 
-    public void removeStudent(DataHandler dataHandler) {
-        listStudents(dataHandler.getStudentList());
-        String login = view.getAnswerAsString("Which student do you want to remove?: ");
-
-        dataHandler.removeUser(dataHandler.getStudentByLogin(login));
+    public void removeStudent() {
+        listStudents();
+        view.printMessage("Who remove?");        
+        dataHandler.removeUser(chooseStudent());
+        view.printMessage("Student removed.");
     }
 
-    public void editStudent(DataHandler dataHandler) {
-        listStudents(dataHandler.getStudentList());
-        String login = view.getAnswerAsString("Which student do you want to edit?: ");
-
-        //dataHandler.editUser(dataHandler.getStudentByLogin(login));
+    public void editStudent() {
+        listStudents();        
+        view.printMessage("Who edit?");        
+        User student = chooseStudent();
+        
+        String password = view.getAnswerAsString("Type new student's password (or nothing): ");
+        String name = view.getAnswerAsString("Type new student's name (or nothing): ");
+        String surname = view.getAnswerAsString("Type new student's surname (or nothing): ");
+        
+        dataHandler.editUser(student, password, name, surname);
+        view.printMessage("Student edited.");
     }
 
-    public void listStudents(List<User> studentList) {
-        view.printUserList(studentList);
+    private User chooseStudent() {
+        String login;
+        User student = null;
+
+        while (student == null) {
+            login = view.getAnswerAsString("Type student's login: ");
+            student = dataHandler.getStudentByLogin(login);
+        }
+        return student;
     }
 
-    public void listAssignments(List<Assignment> assignmentList) {
-        view.printGeneralAssigmentList(assignmentList);
+    public void listStudents() {
+        view.printUserList(dataHandler.getStudentList());
     }
 
-    public void addAssignment(DataHandler dataHandler) {
-        String description = view.getAnswerAsString("Type description of assignment: ");
-        String assignmentId = Integer.toString(getLastIndexOfAssignment(dataHandler));
+    public void listAssignments() {
+        view.printAssigmentList(dataHandler.getAssignmentList());
+    }
+
+    public void addAssignment() {
+        String description = view.getAnswerAsString("Type description: ");
+        String assignmentId = Integer.toString(getLastIndexOfAssignment());
         dataHandler.addAssignment(new Assignment(assignmentId, description));
     }
 
-    public int getLastIndexOfAssignment(DataHandler datahandler) {
-        int lastIndexOfAssignment = datahandler.getAssignmentList().size();
+    // do poprawy największe id moze różnić się od rozmiaru listy
+    public int getLastIndexOfAssignment() {
+        int lastIndexOfAssignment = dataHandler.getAssignmentList().size();
         return lastIndexOfAssignment;
     }
 
-    public void addAssignmentToStudent(DataHandler dataHandler) {
+    public void addAssignmentToStudent() {
 
     }
 
-    public void gradeAssignment(DataHandler dataHandler) {
-        listStudents(dataHandler.getStudentList());
-        String login = view.getAnswerAsString("Which student do you want to grade assignment?: ");
+    public void gradeAssignment() {
+        listStudents();
+        String login = view.getAnswerAsString("Type student's login: ");
         
-        listAssignments(dataHandler.getAssignmentList());
-        String assignmentId = view.getAnswerAsString("Which assignment do you want to grade?: ");
+        listAssignments();
+        String assignmentId = view.getAnswerAsString("Type assignment's id: ");
         Assignment assignment = dataHandler.getAssignmentById(assignmentId);
 
         int grade = view.getAnswerAsInt("Type grade: ");
@@ -91,36 +106,44 @@ public class MentorController extends UserController {
 
     }
 
-    public void handleMenu(DataHandler dataHandler, Integer number) {
+    public void handleMenu(Integer number) {
 
         switch (number) {
             // 1 "List students"
             case 1:
-                listStudents(dataHandler.getStudentList());
+                listStudents();
                 break;
-            // 2 "Add assignment"
+            // 2 "Add student"
             case 2:
-                addAssignment(dataHandler);
+                addStudent();
                 break;
-            // 3 "Add assignment to student"
+            // 3 "Remove student"
             case 3:
-                addAssignmentToStudent(dataHandler);
+                removeStudent();
                 break;
-            // 4 "Check attendance"
+            // 4 "Edit student"
             case 4:
-                checkAttendance();
+                editStudent();
                 break;
-            // 5 "Add student"
+            // 5 "List assignments"
             case 5:
-                addStudent(dataHandler);
+                listAssignments();
                 break;
-            // 6 "Remove student"
+            // 6 "Add assignment"
             case 6:
-                removeStudent(dataHandler);
+                addAssignment();
                 break;
-            // 7 "Edit student"
+            // 7 "Add assignment to student"
             case 7:
-                editStudent(dataHandler);
+                addAssignmentToStudent();
+                break;
+            // 8 "Grade student's assignment"
+            case 8:
+                gradeAssignment();
+                break;
+            // 9 "Check attendance"
+            case 9:
+                checkAttendance();
                 break;
             default:
                 break;

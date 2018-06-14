@@ -7,12 +7,14 @@ import java.util.List;
 public abstract class UserController {
 
     protected List<String> menu;
-    private User loggedUser;
+    protected User loggedUser;
+    protected DataHandler dataHandler;
     protected View view;
 
-    public UserController(User loggedUser, View view) {
+    public UserController(User loggedUser, DataHandler dataHandler, View view) {
         this.loggedUser = loggedUser;
         this.view = view;
+        this.dataHandler = dataHandler;
     }
 
     public List<String> getMenu() {
@@ -23,6 +25,6 @@ public abstract class UserController {
         return view;
     }
 
-    public abstract void handleMenu(DataHandler dataHandler, Integer number);
+    public abstract void handleMenu(Integer number);
     
 }

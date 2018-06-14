@@ -1,50 +1,46 @@
 package controller;
 
 import model.DataHandler;
-
+import view.View;
 import java.io.*;
 
 public class FileHandler {
 
-    private DataHandler dataHandler;
+    public static DataHandler readFromFile(String filename, View view) {
 
-    public FileHandler(DataHandler data){
-        this.dataHandler = data;
+        DataHandler dataHandler = null;
+        FileInputStream fileIn = null;
+        ObjectInputStream input = null;
+
+        try {
+            fileIn = new FileInputStream(filename);
+            input = new ObjectInputStream(fileIn);
+            dataHandler = (DataHandler) input.readObject();
+            view.printMessage("Data deserialized."); 
+            
+            input.close();
+            fileIn.close();             
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        } 
+        return dataHandler;
     }
 
-    public void saveToFile(){
+    public static void saveToFile(DataHandler dataHandler, String filename, View view) {
+        FileOutputStream fileOut = null;
+        ObjectOutputStream output = null;
+
         try {
-            FileOutputStream fileOut = new FileOutputStream("src/main/resources/usersData.txt");
-            ObjectOutputStream out = new ObjectOutputStream(fileOut);
-            out.writeObject(this.dataHandler);
-            out.close();
+            fileOut = new FileOutputStream(filename);
+            output = new ObjectOutputStream(fileOut);
+            output.writeObject(dataHandler);
+            view.printMessage("Serialization Successful.\nCheckout your specified output file.");
+        
+            output.close();
             fileOut.close();
-            System.out.println("\nSerialization Successful... Checkout your specified output file..\n");
 
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    public void readFromFile(Controller controller){
-        try {
-            FileInputStream fileIn = new FileInputStream("src/main/resources/usersData.txt");
-            ObjectInputStream in = new ObjectInputStream(fileIn);
-            this.dataHandler = (DataHandler) in.readObject();
-            controller.setDataHandler(this.dataHandler);
-            in.close();
-            fileIn.close();
-            System.out.println("Data deserialized.");
-        } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public DataHandler getDataHandler() {
-        return dataHandler;
-    }
-
-    public void setDataHandler(DataHandler dataHandler) {
-        this.dataHandler = dataHandler;
     }
 }
