@@ -2,6 +2,7 @@ package controller;
 
 import model.*;
 import view.View;
+import java.lang.Exception;
 import java.util.Arrays;
 import java.util.List;
 
@@ -35,23 +36,33 @@ public class MentorController extends UserController {
     }
 
     public void removeStudent() {
-        listStudents();
-        view.printMessage("Who remove?");        
-        dataHandler.removeUser(chooseStudent());
-        view.printMessage("Student removed.");
+        //if students list is not epmty remove
+        try {  
+            listStudents();
+            view.printMessage("Who remove?");        
+            dataHandler.removeUser(chooseStudent());
+            view.printMessage("Student removed.");
+        } catch (Exception e) {
+            view.printMessage(e.getMessage());                    
+        }
     }
 
     public void editStudent() {
-        listStudents();        
-        view.printMessage("Who edit?");        
-        User student = chooseStudent();
-        
-        String password = view.getAnswerAsString("Type new student's password (or nothing): ");
-        String name = view.getAnswerAsString("Type new student's name (or nothing): ");
-        String surname = view.getAnswerAsString("Type new student's surname (or nothing): ");
-        
-        dataHandler.editUser(student, password, name, surname);
-        view.printMessage("Student edited.");
+        //if students list is not epmty edit
+        try {  
+            listStudents();
+            view.printMessage("Who edit?");        
+            User student = chooseStudent();
+            
+            String password = view.getAnswerAsString("Type new student's password (or nothing): ");
+            String name = view.getAnswerAsString("Type new student's name (or nothing): ");
+            String surname = view.getAnswerAsString("Type new student's surname (or nothing): ");
+            
+            dataHandler.editUser(student, password, name, surname);
+            view.printMessage("Student edited.");
+        } catch (Exception e) {
+            view.printMessage(e.getMessage());                    
+        }
     }
 
     private User chooseStudent() {
@@ -65,7 +76,7 @@ public class MentorController extends UserController {
         return student;
     }
 
-    public void listStudents() {
+    public void listStudents() throws Exception {
         view.printUserList(dataHandler.getStudentList());
     }
 
@@ -90,16 +101,21 @@ public class MentorController extends UserController {
     }
 
     public void gradeAssignment() {
-        listStudents();
-        String login = view.getAnswerAsString("Type student's login: ");
-        
-        listAssignments();
-        String assignmentId = view.getAnswerAsString("Type assignment's id: ");
-        Assignment assignment = dataHandler.getAssignmentById(assignmentId);
+        //if students list is not epmty grade
+        try {  
+            listStudents();
+            String login = view.getAnswerAsString("Type student's login: ");
+    //if empty end
+            listAssignments();
+            String assignmentId = view.getAnswerAsString("Type assignment's id: ");
+            Assignment assignment = dataHandler.getAssignmentById(assignmentId);
 
-        int grade = view.getAnswerAsInt("Type grade: ");
+            int grade = view.getAnswerAsInt("Type grade: ");
 
-        dataHandler.gradeAssignment(dataHandler.getStudentByLogin(login), assignment, grade);
+            dataHandler.gradeAssignment(dataHandler.getStudentByLogin(login), assignment, grade);
+        } catch (Exception e) {
+            view.printMessage(e.getMessage());                    
+        }
     }
 
     public void checkAttendance() {
@@ -111,8 +127,13 @@ public class MentorController extends UserController {
         switch (number) {
             // 1 "List students"
             case 1:
-                listStudents();
-                break;
+                try {  
+                    listStudents();
+                    break;
+                } catch (Exception e) {
+                    view.printMessage(e.getMessage());  
+                    break;                  
+                }                
             // 2 "Add student"
             case 2:
                 addStudent();

@@ -21,6 +21,7 @@ public class StudentController extends UserController {
     }
 
     public void submitAssignment() {
+//if empty end
         listStudentAssignments();
 
         String assignmentId = view.getAnswerAsString("Type assignment's id: ");
