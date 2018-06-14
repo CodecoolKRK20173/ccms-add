@@ -2,8 +2,8 @@ package controller;
 
 import model.*;
 import view.View;
+import java.lang.Exception;
 import java.util.Arrays;
-import java.util.List;
 
 public class OfficeWorkerController extends UserController {
 
@@ -15,7 +15,7 @@ public class OfficeWorkerController extends UserController {
         super(loggedUser, dataHandler, view);
     }
 
-    public void listStudents() {
+    public void listStudents() throws Exception {
         view.printUserList(dataHandler.getStudentList());
     }
 
@@ -23,7 +23,13 @@ public class OfficeWorkerController extends UserController {
         switch (number) {
             // 1 "List students"
             case 1:
-                listStudents();
+                try {  
+                    listStudents();
+                    break;
+                } catch (Exception e) {
+                    view.printMessage(e.getMessage());
+                    break;                     
+                }   
             default:
                 break;
         }

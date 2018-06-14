@@ -3,7 +3,6 @@ package controller;
 import model.*;
 import view.View;
 import java.util.Arrays;
-import java.util.List;
 
 public class StudentController extends UserController {
 
@@ -16,13 +15,13 @@ public class StudentController extends UserController {
         super(loggedUser, dataHandler, view);
     }
 
-
     public void listStudentAssignments() {
         view.printStudentAssignmentList(((Student) loggedUser).getAssignmentList());
 }
 
 
     public void submitAssignment() {
+//if empty end
         listStudentAssignments();
 
         String assignmentId = view.getAnswerAsString("Type assignment's id: ");

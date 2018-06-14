@@ -3,6 +3,7 @@ package view;
 import model.Assignment;
 import model.StudentAssignment;
 import model.User;
+import java.lang.Exception;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
@@ -48,12 +49,14 @@ public class View {
         System.out.println("    (0) Exit");
     }
 
-    public void printUserList(List<User> list) {
-        if (!isEmptyList(list)) {
+    public void printUserList(List<User> list) throws Exception {
+        if (!list.isEmpty()) {
             for (User user : list) {
                 System.out.println(user.toString());
             }
-        } 
+        } else {
+            throw new Exception("List is empty.");
+        }
     }
 
     public void printStudentAssignmentList(List<StudentAssignment> list) {
@@ -79,19 +82,4 @@ public class View {
         }
         return false;
     }
-
-    public void clearScreen() {
-        System.out.print("\033[H\033[2J");
-        System.out.flush();
-    }
-
-    /*
-     * public void pressEnterKeyToContinue() {
-     * System.out.println("Press Enter key to continue..."); Scanner pressEnter =
-     * new Scanner(System.in); String input = pressEnter.nextLine(); }
-     * 
-     * public void printNameSurname(User user){ System.out.println("Name:  " +
-     * user.getName() + ",  Surname:  " + user.getSurname() + "  login:  " +
-     * user.getLogin() + "  password:  " + user.getPassword()); }
-     */
 }

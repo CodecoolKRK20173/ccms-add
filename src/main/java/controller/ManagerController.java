@@ -1,9 +1,10 @@
 package controller;
 
 import model.*;
-import java.util.Arrays;
-import java.util.List;
 import view.View;
+import java.lang.Exception;
+import java.util.Arrays;
+
 
 public class ManagerController extends UserController {
 
@@ -20,7 +21,15 @@ public class ManagerController extends UserController {
     }
 
     public void addMentor() {
-        String login = view.getAnswerAsString("Type mentor's login: ");
+        boolean uniquelogin = false;
+        String login = "";
+        while (!uniquelogin) {
+            login =  view.getAnswerAsString("Type mentor\'s login: ");
+            uniquelogin = this.dataHandler.isLoginUnique(this.dataHandler.getMentorList(), login);
+            if (!uniquelogin){
+                System.out.println("login taken, try again");
+            }
+        }
         String password = view.getAnswerAsString("Type mentor's password: ");
         String name = view.getAnswerAsString("Type mentor's name: ");
         String surname = view.getAnswerAsString("Type mentor's surname: ");
@@ -30,26 +39,37 @@ public class ManagerController extends UserController {
     }
 
     public void removeMentor() {
-        listMentors();        
-        view.printMessage("Who remove?");        
-        dataHandler.removeUser(chooseMentor());
-        view.printMessage("Mentor removed.");
+        //if mentors list is not epmty remove
+        try {  
+            listMentors();        
+            view.printMessage("Who remove?");        
+            dataHandler.removeUser(chooseMentor());
+            view.printMessage("Mentor removed.");
+        } catch (Exception e) {
+            view.printMessage(e.getMessage());                    
+        }
     }
 
     public void editMentor() {
-        listMentors();
-        view.printMessage("Who edit?");        
-        User mentor = chooseMentor();
-        
-        String password = view.getAnswerAsString("Type new mentor's password (or nothing): ");
-        String name = view.getAnswerAsString("Type new mentor's name (or nothing): ");
-        String surname = view.getAnswerAsString("Type new mentor's surname (or nothing): ");
-        
-        dataHandler.editUser(mentor, password, name, surname);
-        view.printMessage("Mentor edited.");
+        //if mentors list is not epmty edit
+        try {  
+            listMentors();
+            view.printMessage("Who edit?");        
+            User mentor = chooseMentor();
+            
+            String password = view.getAnswerAsString("Type new mentor's password (or nothing): ");
+            String name = view.getAnswerAsString("Type new mentor's name (or nothing): ");
+            String surname = view.getAnswerAsString("Type new mentor's surname (or nothing): ");
+            
+            dataHandler.editUser(mentor, password, name, surname);
+            view.printMessage("Mentor edited.");
+        } catch (Exception e) {
+            view.printMessage(e.getMessage());                    
+        }
     }
 
     private User chooseMentor() {
+
         String login;
         User mentor = null;
 
@@ -60,11 +80,11 @@ public class ManagerController extends UserController {
         return mentor;
     }
 
-    public void listStudents() {
+    public void listStudents() throws Exception {
         view.printUserList(dataHandler.getStudentList());
     }
 
-    public void listMentors() {
+    public void listMentors() throws Exception {
         view.printUserList(dataHandler.getMentorList());
     }
 
@@ -73,12 +93,22 @@ public class ManagerController extends UserController {
         switch (number) {
             // 1 "List mentors"           
             case 1:
-                listMentors();
-                break;
+                try {
+                    listMentors();
+                    break;
+                } catch (Exception e) {
+                    view.printMessage(e.getMessage());
+                    break;                    
+                }
             // 2 "List students"
             case 2:
-                listStudents();
-                break;
+                try {
+                    listStudents();
+                    break;
+                } catch (Exception e) {
+                    view.printMessage(e.getMessage());
+                    break;                       
+                }
             // 3 "Add mentor"
             case 3:
                 addMentor();
