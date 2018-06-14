@@ -31,7 +31,7 @@ public class MentorController extends UserController {
             login =  view.getAnswerAsString("Type student\'s login: ");
             uniquelogin = this.dataHandler.isLoginUnique(this.dataHandler.getStudentList(), login);
             if (!uniquelogin){
-                System.out.println("login taken, try again");
+                this.view.printMessage("login taken, try again");
             }
         }
         String password = view.getAnswerAsString("Type student\'s password: ");
@@ -98,7 +98,7 @@ public class MentorController extends UserController {
             assignmentId =  view.getAnswerAsString("Type assignment name: ");
             uniqueId = this.dataHandler.isIdUnique(this.dataHandler.getAssignmentList(), assignmentId);
             if (!uniqueId){
-                System.out.println("Name taken, try again");
+                this.view.printMessage("Name taken, try again");
             }
         }
         String description = view.getAnswerAsString("Type description: ");
