@@ -6,8 +6,6 @@ import model.User;
 
 import java.lang.Exception;
 import java.util.Arrays;
-import java.util.List;
-import java.util.Scanner;
 
 public class Controller {
 

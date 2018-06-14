@@ -1,8 +1,4 @@
 import controller.*;
-import model.*;
-import view.View;
-
-import java.util.Scanner;
 
 public class Main {
 
