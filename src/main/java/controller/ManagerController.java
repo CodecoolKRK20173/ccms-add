@@ -27,7 +27,7 @@ public class ManagerController extends UserController {
             login =  view.getAnswerAsString("Type mentor\'s login: ");
             uniquelogin = this.dataHandler.isLoginUnique(this.dataHandler.getMentorList(), login);
             if (!uniquelogin){
-                System.out.println("login taken, try again");
+                this.view.printMessage("login taken, try again");
             }
         }
         String password = view.getAnswerAsString("Type mentor's password: ");
