@@ -70,7 +70,7 @@ public class ManagerController extends UserController {
     }
 
     private User chooseMentor() {
-//if empty end
+
         String login;
         User mentor = null;
 
@@ -98,7 +98,8 @@ public class ManagerController extends UserController {
                     listMentors();
                     break;
                 } catch (Exception e) {
-                    view.printMessage(e.getMessage());                    
+                    view.printMessage(e.getMessage());
+                    break;                    
                 }
             // 2 "List students"
             case 2:
