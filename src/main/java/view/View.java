@@ -59,27 +59,23 @@ public class View {
         }
     }
 
-    public void printStudentAssignmentList(List<StudentAssignment> list) {
-        if (!isEmptyList(list)) {
+    public void printStudentAssignmentList(List<StudentAssignment> list) throws Exception {
+        if (!list.isEmpty()) {
             for (StudentAssignment item : list) {
                 System.out.println(item.toString());
             }
-        } 
+        } else {
+            throw new Exception("List of student assignments is empty.");
+        }
     }
 
-    public void printAssigmentList(List<Assignment> list) {
-        if (!isEmptyList(list)) {
+    public void printAssigmentList(List<Assignment> list) throws Exception {
+        if (!list.isEmpty()) {
             for (Assignment item : list) {
                 System.out.println(item.toString());
             }
+        } else {
+            throw new Exception("List of assignments is empty.");
         }
-    }
-
-    private boolean isEmptyList(List list) {
-        if (list.isEmpty()) {
-            System.out.println("List is empty.");
-            return true;
-        }
-        return false;
     }
 }
